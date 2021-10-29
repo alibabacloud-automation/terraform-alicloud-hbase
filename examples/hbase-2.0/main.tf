@@ -10,10 +10,6 @@ variable "availability_zone" {
   default     = "cn-shenzhen-b"
 }
 
-variable "region" {
-  default = "cn-shenzhen"
-}
-
 provider "alicloud" {
   region = var.region
   profile = var.profile
@@ -24,15 +20,15 @@ data "alicloud_zones" "default" {
   enable_details              = true
 }
 
-data "alicloud_vpcs" "default" {
-  is_default = true
+resource "alicloud_vpc" "vpc" {
+  vpc_name   = "tf_test_foo"
+  cidr_block = "172.16.0.0/12"
 }
 
 resource "alicloud_vswitch" "this" {
-  name              = "tf-module-hbase-single-2-0-vsw"
-  availability_zone = var.availability_zone
-  vpc_id            = data.alicloud_vpcs.default.vpcs.0.id
-  cidr_block        = cidrsubnet(data.alicloud_vpcs.default.vpcs.0.cidr_block, 4, 4)
+  vpc_id            = alicloud_vpc.vpc.id
+  cidr_block        = "172.16.0.0/21"
+  zone_id           = var.availability_zone
 }
 
 module "hbase_example" {

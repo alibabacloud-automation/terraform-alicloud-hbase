@@ -10,18 +10,12 @@ These types of resources are supported:
 
 * [alicloud_hbase_instance](https://registry.terraform.io/providers/aliyun/alicloud/latest/docs/data-sources/hbase_instances)
 
-## Terraform versions
-
-This module requires Terraform 0.12.
-
 Usage
 -----
 
 ```hcl
 module "hbase" {
   source               = "terraform-alicloud-modules/hbase/alicloud"
-  region = "cn-beijing"
-  profile = "Your-Profile-Name"
   #################
   # HBase Instance
   #################
@@ -55,9 +49,75 @@ See [more modules](https://github.com/terraform-alicloud-modules/terraform-alicl
 * [Example of a HBase 2.0](https://github.com/terraform-alicloud-modules/terraform-alicloud-hbase/tree/master/examples/hbase-2.0)
 
 ## Notes
+From the version v1.1.0, the module has removed the following `provider` setting:
 
-* This module using AccessKey and SecretKey are from `profile` and `shared_credentials_file`.
-If you have not set them yet, please install [aliyun-cli](https://github.com/aliyun/aliyun-cli#installation) and configure it.
+```hcl
+provider "alicloud" {
+  profile                 = var.profile != "" ? var.profile : null
+  shared_credentials_file = var.shared_credentials_file != "" ? var.shared_credentials_file : null
+  region                  = var.region != "" ? var.region : null
+  skip_region_validation  = var.skip_region_validation
+  configuration_source    = "terraform-alicloud-modules/hbase"
+}
+```
+
+If you still want to use the `provider` setting to apply this module, you can specify a supported version, like 1.0.0:
+
+```hcl
+module "hbase_example" {
+  source         = "terraform-alicloud-modules/hbase/alicloud/"
+  version        = "1.0.0"
+  region         = "cn-beijing"
+  profile        = "Your-Profile-Name"
+  engine         = "HBase"
+  engine_version = "2.0"
+  // ...
+}
+```
+
+If you want to upgrade the module to 1.1.0 or higher in-place, you can define a provider which same region with
+previous region:
+
+```hcl
+provider "alicloud" {
+  region  = "cn-beijing"
+  profile = "Your-Profile-Name"
+}
+module "hbase_example" {
+  source         = "terraform-alicloud-modules/hbase/alicloud/"
+  engine         = "HBase"
+  engine_version = "2.0"
+  // ...
+}
+```
+or specify an alias provider with a defined region to the module using `providers`:
+
+```hcl
+provider "alicloud" {
+  region  = "cn-beijing"
+  profile = "Your-Profile-Name"
+  alias   = "bj"
+}
+module "hbase_example" {
+  source         = "terraform-alicloud-modules/hbase/alicloud/"
+  providers      = {
+    alicloud = alicloud.bj
+  }
+  engine         = "HBase"
+  engine_version = "2.0"
+  // ...
+}
+```
+
+and then run `terraform init` and `terraform apply` to make the defined provider effect to the existing module state.
+
+More details see [How to use provider in the module](https://www.terraform.io/docs/language/modules/develop/providers.html#passing-providers-explicitly)
+
+## Terraform versions
+
+| Name | Version |
+|------|---------|
+| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 0.12.0 |
 
 ## Submit Issues
 If you have any problems when using this module, please opening a [provider issue](https://github.com/aliyun/terraform-provider-alicloud/issues) and let us know.

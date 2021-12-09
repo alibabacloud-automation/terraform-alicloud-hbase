@@ -1,6 +1,5 @@
 在阿里云上创建一个 HBase 单机版 实例数据库
 terraform-alicloud-hbase
-=====================================================================
 
 
 本 Module 用于在阿里云的 VPC 下创建一个[HBase云数据库](https://help.aliyun.com/product/49055.html).
@@ -116,6 +115,7 @@ module "hbase_example" {
 | Name | Version |
 |------|---------|
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 0.12.0 |
+| <a name="requirement_alicloud"></a> [alicloud](#requirement\_alicloud) | >= 1.56.0 |
 
 ## 提交问题
 如果在使用该 Terraform Module 的过程中有任何问题，可以直接创建一个 [provider issue](https://github.com/aliyun/terraform-provider-alicloud/issues)，我们将根据问题描述提供解决方案。

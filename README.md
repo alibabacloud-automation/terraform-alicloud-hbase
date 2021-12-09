@@ -1,6 +1,5 @@
 Terraform module which creates hbase single instance and other resources on Alibaba Cloud
 terraform-alicloud-hbase
-==================================================================================
 
 English | [简体中文](https://github.com/terraform-alicloud-modules/terraform-alicloud-hbase/blob/master/README-CN.md)
 
@@ -118,6 +117,7 @@ More details see [How to use provider in the module](https://www.terraform.io/do
 | Name | Version |
 |------|---------|
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 0.12.0 |
+| <a name="requirement_alicloud"></a> [alicloud](#requirement\_alicloud) | >= 1.56.0 |
 
 ## Submit Issues
 If you have any problems when using this module, please opening a [provider issue](https://github.com/aliyun/terraform-provider-alicloud/issues) and let us know.

@@ -7,11 +7,11 @@ variable "region" {
 }
 
 variable "availability_zone" {
-  default     = "cn-shenzhen-b"
+  default = "cn-shenzhen-b"
 }
 
 provider "alicloud" {
-  region = var.region
+  region  = var.region
   profile = var.profile
 }
 
@@ -32,15 +32,15 @@ resource "alicloud_vswitch" "this" {
 }
 
 module "hbase_example" {
-  source                 = "../../modules/hbase-1.1"
-  region                 = var.region
-  instance_name          = "tf-module-hbase-single-example-1.1"
-  availability_zone      = var.availability_zone
-  master_instance_type   = "hbase.sn1ne.large"
-  core_instance_type     = "hbase.sn1ne.large"
-  core_disk_type         = "cloud_ssd"
-  core_disk_size         = 400
-  pay_type               = "PostPaid"
-  auto_renew             = "false"
-  vswitch_id             = alicloud_vswitch.this.id
+  source               = "../../modules/hbase-1.1"
+  region               = var.region
+  instance_name        = "tf-module-hbase-single-example-1.1"
+  availability_zone    = var.availability_zone
+  master_instance_type = "hbase.sn1ne.large"
+  core_instance_type   = "hbase.sn1ne.large"
+  core_disk_type       = "cloud_ssd"
+  core_disk_size       = 400
+  pay_type             = "PostPaid"
+  auto_renew           = "false"
+  vswitch_id           = alicloud_vswitch.this.id
 }

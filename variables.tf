@@ -25,19 +25,34 @@ variable "skip_region_validation" {
   default     = false
 }
 
+#################
+# extend
+#################
+variable "existing_instance_id" {
+  description = "The Id of an existing HBase instance. It will be ignored when create = true."
+  type        = string
+  default     = ""
+}
+
 ##############################################################
 # HBase Instance
 ##############################################################
-variable "availability_zone" {
-  description = "The available zone to launch hbase instance, Valid value: cn-hangzhou-f, cn-shanghai-d, cn-beijing-e, cn-shenzhen-b, cn-zhangjiakou-a, cn-hongkong-b, ap-southeast-1a, ap-northeast-1b, eu-central-1a"
-  type        = string
-  default     = ""
+variable "create" {
+  description = "Whether to create HBase instance. If false, you can use a existing HBase instance by setting 'existing_instance_id'."
+  type        = bool
+  default     = false
 }
 
 variable "instance_name" {
   description = "Display name of the instance, [2, 128] English or Chinese characters, must start with a letter or Chinese in size, can contain numbers, '_' or '.', '-'."
   type        = string
-  default     = "tf-module-hbase-single"
+  default     = ""
+}
+
+variable "availability_zone" {
+  description = "The available zone to launch hbase instance, Valid value: cn-hangzhou-f, cn-shanghai-d, cn-beijing-e, cn-shenzhen-b, cn-zhangjiakou-a, cn-hongkong-b, ap-southeast-1a, ap-northeast-1b, eu-central-1a"
+  type        = string
+  default     = ""
 }
 
 variable "engine_version" {
@@ -49,15 +64,14 @@ variable "engine_version" {
 variable "master_instance_type" {
   description = "The master instance type. Valid value: 'hbase.n1.small', 'hbase.sn1ne.large', 'hbase.sn1ne.xlarge' and so on."
   type        = string
-  default     = "hbase.sn1ne.large"
+  default     = ""
 }
 
 variable "core_instance_type" {
   description = "The master instance type. Valid value: 'hbase.n1.small', 'hbase.sn1ne.large', 'hbase.sn1ne.xlarge' and so on."
   type        = string
-  default     = "hbase.sn1ne.large"
+  default     = ""
 }
-
 
 variable "core_disk_type" {
   description = "Core node disk type. Valid value:cloud_ssd, cloud_efficiency."
@@ -79,27 +93,24 @@ variable "pay_type" {
 
 variable "duration" {
   description = "The duration that you will buy HBase cluster, valid when pay_type = PrePaid."
-  type        = string
+  type        = number
   default     = 1
 }
 
 variable "auto_renew" {
   description = "Auto to renew cluster, valid when pay_type = PrePaid."
-  type        = string
-  default     = "false"
+  type        = bool
+  default     = false
+}
+
+variable "deletion_protection" {
+  description = "The switch of delete protection."
+  type        = bool
+  default     = false
 }
 
 variable "vswitch_id" {
   description = "VSwitch variables, if vswitch_id is empty, then the net_type = classic."
-  type        = string
-  default     = ""
-}
-
-#################
-# extend
-#################
-variable "existing_instance_id" {
-  description = "The Id of an existing HBase instance. If set, the `create` will be ignored. "
   type        = string
   default     = ""
 }

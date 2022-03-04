@@ -1,5 +1,5 @@
 resource "alicloud_hbase_instance" "this" {
-  count                = var.existing_instance_id != "" ? 0 : 1
+  count                  = var.create ? 1 : 0
   name                   = var.instance_name
   zone_id                = var.availability_zone
   engine                 = "hbase"
@@ -12,6 +12,6 @@ resource "alicloud_hbase_instance" "this" {
   pay_type               = var.pay_type
   duration               = var.duration
   auto_renew             = var.auto_renew
+  deletion_protection    = var.deletion_protection
   vswitch_id             = var.vswitch_id
 }
-

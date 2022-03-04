@@ -2,25 +2,25 @@
 # Provider
 #################
 variable "profile" {
-  description = "The profile name as set in the shared credentials file. If not set, it will be sourced from the ALICLOUD_PROFILE environment variable."
+  description = "(Deprecated from version 1.2.0) The profile name as set in the shared credentials file. If not set, it will be sourced from the ALICLOUD_PROFILE environment variable."
   type        = string
   default     = ""
 }
 
 variable "shared_credentials_file" {
-  description = "This is the path to the shared credentials file. If this is not set and a profile is specified, $HOME/.aliyun/config.json will be used."
+  description = "(Deprecated from version 1.2.0) This is the path to the shared credentials file. If this is not set and a profile is specified, $HOME/.aliyun/config.json will be used."
   type        = string
   default     = ""
 }
 
 variable "region" {
-  description = "The region used to launch this module resources."
+  description = "(Deprecated from version 1.2.0) The region used to launch this module resources."
   type        = string
   default     = ""
 }
 
 variable "skip_region_validation" {
-  description = "Skip static validation of region ID. Used by users of alternative AlibabaCloud-like APIs or users w/ access to regions that are not public (yet)."
+  description = "(Deprecated from version 1.2.0) Skip static validation of region ID. Used by users of alternative AlibabaCloud-like APIs or users w/ access to regions that are not public (yet)."
   type        = bool
   default     = false
 }
@@ -28,22 +28,28 @@ variable "skip_region_validation" {
 ##############################################################
 # HBase Instance
 ##############################################################
+variable "create" {
+  description = "Whether to create HBase instance. If false, you can use a existing HBase instance by setting 'existing_instance_id'."
+  type        = bool
+  default     = false
+}
+
+variable "instance_name" {
+  description = "Display name of the instance, [2, 128] English or Chinese characters, must start with a letter or Chinese in size, can contain numbers, '_' or '.', '-'."
+  type        = string
+  default     = ""
+}
+
 variable "availability_zone" {
   description = "The available zone to launch hbase instance, Valid value: cn-hangzhou-f, cn-shanghai-d, cn-beijing-e, cn-shenzhen-b, cn-zhangjiakou-a, cn-hongkong-b, ap-southeast-1a, ap-northeast-1b, eu-central-1a"
   type        = string
   default     = ""
 }
 
-variable "instance_name" {
-  description = "Display name of the instance, [2, 128] English or Chinese characters, must start with a letter or Chinese in size, can contain numbers, '_' or '.', '-'."
-  type        = string
-  default     = "tf-module-hbase-single-modules"
-}
-
 variable "engine_version" {
   description = "The version number of the database. Valid value: hbase:'1.1', '2.0'."
   type        = string
-  default     = "2.0"
+  default     = "1.1"
 }
 
 variable "master_instance_type" {
@@ -90,8 +96,14 @@ variable "duration" {
 
 variable "auto_renew" {
   description = "Auto to renew cluster, valid when pay_type = PrePaid."
-  type        = string
-  default     = "false"
+  type        = bool
+  default     = false
+}
+
+variable "deletion_protection" {
+  description = "The switch of delete protection."
+  type        = bool
+  default     = false
 }
 
 variable "vswitch_id" {

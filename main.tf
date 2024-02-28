@@ -13,5 +13,6 @@ resource "alicloud_hbase_instance" "this" {
   duration               = var.duration
   auto_renew             = var.auto_renew
   deletion_protection    = var.deletion_protection
+  vpc_id                 = var.vpc_id
   vswitch_id             = var.vswitch_id
 }

@@ -61,6 +61,11 @@ output "this_hbase_instance_auto_renew" {
   value       = module.hbase.this_hbase_instance_auto_renew
 }
 
+output "this_hbase_instance_vpc_id" {
+  description = "The virtual private cloud ID to launch HBase instances. "
+  value       = module.hbase.this_hbase_instance_vpc_id
+}
+
 output "this_hbase_instance_vswitch_id" {
   description = "The virtual switch ID to launch HBase instances in one VPC. "
   value       = module.hbase.this_hbase_instance_vswitch_id

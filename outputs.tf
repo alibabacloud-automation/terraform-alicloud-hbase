@@ -59,6 +59,11 @@ output "this_hbase_instance_auto_renew" {
   value       = concat(alicloud_hbase_instance.this.*.auto_renew, [""])[0]
 }
 
+output "this_hbase_instance_vpc_id" {
+  description = "The virtual private cloud ID to launch HBase instances. "
+  value       = concat(alicloud_hbase_instance.this.*.vpc_id, [""])[0]
+}
+
 output "this_hbase_instance_vswitch_id" {
   description = "The virtual switch ID to launch HBase instances in one VPC. "
   value       = concat(alicloud_hbase_instance.this.*.vswitch_id, [""])[0]

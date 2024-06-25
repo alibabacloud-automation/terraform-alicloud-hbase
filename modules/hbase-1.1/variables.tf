@@ -106,6 +106,12 @@ variable "deletion_protection" {
   default     = false
 }
 
+variable "vpc_id" {
+  description = "The id of the VPC"
+  type        = string
+  default     = ""
+}
+
 variable "vswitch_id" {
   description = "VSwitch variables, if vswitch_id is empty, then the net_type = classic."
   type        = string

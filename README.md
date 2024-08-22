@@ -36,15 +36,14 @@ module "hbase" {
 
 This module provides rich sub-modules to support different HBase version and usage scenario, like:
 
-* [Single HBase 1.1](https://github.com/terraform-alicloud-modules/terraform-alicloud-hbase/tree/master/modules/hbase-1.1)
-* [Single HBase 2.0](https://github.com/terraform-alicloud-modules/terraform-alicloud-hbase/tree/master/modules/hbase-2.0)
+* [（Deprecated) Single HBase 1.1](https://github.com/terraform-alicloud-modules/terraform-alicloud-hbase/tree/master/modules/hbase-1.1)
+* [（Deprecated) Single HBase 2.0](https://github.com/terraform-alicloud-modules/terraform-alicloud-hbase/tree/master/modules/hbase-2.0)
 
 See [more modules](https://github.com/terraform-alicloud-modules/terraform-alicloud-hbase/tree/master/modules).
 
 ## Examples
 
-* [Example of a HBase 1.1](https://github.com/terraform-alicloud-modules/terraform-alicloud-hbase/tree/master/examples/hbase-1.1)
-* [Example of a HBase 2.0](https://github.com/terraform-alicloud-modules/terraform-alicloud-hbase/tree/master/examples/hbase-2.0)
+* [Complete Example](https://github.com/terraform-alicloud-modules/terraform-alicloud-hbase/tree/master/examples/complete)
 
 ## Notes
 From the version v1.1.0, the module has removed the following `provider` setting:

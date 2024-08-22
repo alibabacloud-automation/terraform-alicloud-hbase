@@ -35,16 +35,15 @@ module "hbase_example" {
 
 本 Module 提供了丰富多样的模板用于创建不同版本和规格的 HBase 资源，以满足不同的使用场景，如：
 
-* [单机版 HBase 1.1](https://github.com/terraform-alicloud-modules/terraform-alicloud-hbase/tree/master/modules/hbase-1.1)
-* [单机版 HBase 2.0](https://github.com/terraform-alicloud-modules/terraform-alicloud-hbase/tree/master/modules/hbase-2.0)
+* [（已废弃）单机版 HBase 1.1](https://github.com/terraform-alicloud-modules/terraform-alicloud-hbase/tree/master/modules/hbase-1.1)
+* [（已废弃）单机版 HBase 2.0](https://github.com/terraform-alicloud-modules/terraform-alicloud-hbase/tree/master/modules/hbase-2.0)
 
 
 更多模板详见 [Modules](https://github.com/terraform-alicloud-modules/terraform-alicloud-hbase/tree/master/modules).
 
 ## 示例
 
-* [单机版 HBase 1.1 创建示例](https://github.com/terraform-alicloud-modules/terraform-alicloud-hbase/tree/master/examples/hbase-1.1)
-* [单机版 HBase 2.0 创建示例](https://github.com/terraform-alicloud-modules/terraform-alicloud-hbase/tree/master/examples/hbase-2.0)
+* [完整示例](https://github.com/terraform-alicloud-modules/terraform-alicloud-hbase/tree/master/examples/complete)
 
 ## 注意事项
 本Module从版本v1.1.0开始已经移除掉如下的 provider 的显式设置：

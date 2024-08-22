@@ -14,5 +14,5 @@ variable "core_disk_size" {
 variable "deletion_protection" {
   description = "The switch of delete protection."
   type        = bool
-  default     = true
+  default     = false
 }

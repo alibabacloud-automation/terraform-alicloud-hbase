@@ -14,4 +14,6 @@ resource "alicloud_hbase_instance" "this" {
   auto_renew             = var.auto_renew
   deletion_protection    = var.deletion_protection
   vswitch_id             = var.vswitch_id
+  immediate_delete_flag  = var.immediate_delete_flag
+  vpc_id                 = var.vpc_id
 }

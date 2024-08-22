@@ -114,3 +114,15 @@ variable "vswitch_id" {
   type        = string
   default     = ""
 }
+
+variable "vpc_id" {
+  description = "The id of the VPC."
+  type        = string
+  default     = null
+}
+
+variable "immediate_delete_flag" {
+  description = "The switch of delete immediate. True: delete immediate, False: delete delay. You will not found the cluster no matter set true or false."
+  type        = bool
+  default     = false
+}

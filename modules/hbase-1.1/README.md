@@ -1,3 +1,7 @@
+# Deprecated
+
+This submodule has been deprecated. Please use terraform-alicloud-modules/hbase/alicloud instead.
+
 # Alibaba Cloud hbase-1.1 Terraform Module
 
 Configuration in this directory creates set of HBase single resources instance

@@ -1,4 +1,8 @@
-## 1.2.0 (Unreleased)
+## 1.3.0 (Unreleased)
+## 1.2.0 (August 22, 2024)
+
+- module: support vpc_id and immediate_delete_flag, deprecate the submodules; examples/complete: improve the examples [GH-8](https://github.com/alibabacloud-automation/terraform-alicloud-hbase/pull/8)
+
 ## 1.1.0 (December 10, 2021)
 
 ENHANCEMENTS:

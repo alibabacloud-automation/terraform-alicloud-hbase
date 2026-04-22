@@ -1,29 +1,3 @@
-#################
-# Provider
-#################
-variable "profile" {
-  description = "(Deprecated from version 1.2.0) The profile name as set in the shared credentials file. If not set, it will be sourced from the ALICLOUD_PROFILE environment variable."
-  type        = string
-  default     = ""
-}
-
-variable "shared_credentials_file" {
-  description = "(Deprecated from version 1.2.0) This is the path to the shared credentials file. If this is not set and a profile is specified, $HOME/.aliyun/config.json will be used."
-  type        = string
-  default     = ""
-}
-
-variable "region" {
-  description = "(Deprecated from version 1.2.0) The region used to launch this module resources."
-  type        = string
-  default     = ""
-}
-
-variable "skip_region_validation" {
-  description = "(Deprecated from version 1.2.0) Skip static validation of region ID. Used by users of alternative AlibabaCloud-like APIs or users w/ access to regions that are not public (yet)."
-  type        = bool
-  default     = false
-}
 
 ##############################################################
 # HBase Instance
@@ -46,12 +20,6 @@ variable "availability_zone" {
   default     = ""
 }
 
-variable "engine_version" {
-  description = "The version number of the database. Valid value: hbase:'1.1', '2.0'."
-  type        = string
-  default     = "1.1"
-}
-
 variable "master_instance_type" {
   description = "The master instance type. Valid value: 'hbase.n1.small', 'hbase.sn1ne.large', 'hbase.sn1ne.xlarge' and so on."
   type        = string
@@ -62,12 +30,6 @@ variable "core_instance_type" {
   description = "The master instance type. Valid value: 'hbase.n1.small', 'hbase.sn1ne.large', 'hbase.sn1ne.xlarge' and so on."
   type        = string
   default     = ""
-}
-
-variable "core_instance_quantity" {
-  description = "Core instance node count, [3-20]."
-  type        = number
-  default     = 3
 }
 
 variable "core_disk_type" {

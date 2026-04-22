@@ -1,3 +1,9 @@
+variable "availability_zone" {
+  description = "The availability zone of the instance."
+  type        = string
+  default     = "cn-shenzhen-b"
+}
+
 # HBase Instance
 variable "instance_name" {
   description = "Display name of the instance, [2, 128] English or Chinese characters, must start with a letter or Chinese in size, can contain numbers, '_' or '.', '-'."
